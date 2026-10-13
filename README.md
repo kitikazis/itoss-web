@@ -42,7 +42,7 @@ están escritos en el HTML de cada página; si cambian, actualízalos también (
 
 ## Reemplazar imágenes, logos y brochure
 
-- **Logo:** sustituye `img/logo-itoss.png` (el actual es un placeholder generado). Opcional: `img/favicon.svg`.
+- **Logo:** sustituye `img/logo-itoss.svg` (vectorial; el PNG queda de respaldo). Opcional: `img/favicon.svg`.
 - **Fotos de productos, alquiler y proyectos:** edita los arrays `PRODUCTOS`, `ALQUILER` y `PROYECTOS` en `assets/js/main.js`
   (cambia `imagen` por `"./img/mi-foto.jpg"`). La ubicación de cada proyecto también está ahí.
 - **Hero, tarjetas de servicios y banners:** busca los comentarios `<!-- REEMPLAZAR -->` en los HTML.
