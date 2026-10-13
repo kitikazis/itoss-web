@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panel de administración | ITOSS</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#0A2A5E">
+  <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { marino: '#0B3D91', oscuro: '#0A2A5E', turquesa: '#1BA3C6', naranja: '#F26A1B', fondo: '#F5F8FC' },
+          fontFamily: { titulo: ['Montserrat', 'sans-serif'], texto: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <style>
+    html { scroll-behavior: auto; }
+    .card { background: #fff; border-radius: 1rem; box-shadow: 0 1px 3px rgba(10,42,94,.08); padding: 1.25rem; }
+    @media (min-width: 640px) { .card { padding: 1.5rem; } }
+    .btn-s {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      min-height: 44px; padding: .55rem 1.1rem; border-radius: .5rem; border: 2px solid #0B3D91;
+      background: #fff; color: #0B3D91; font-family: Montserrat, sans-serif; font-weight: 700; font-size: .9rem;
+      transition: background .2s, color .2s; cursor: pointer;
+    }
+    .btn-s:hover { background: #0B3D91; color: #fff; }
+    .btn-ic {
+      width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: .5rem; color: #0B3D91; border: 1px solid #e2e8f0; background: #fff; transition: background .2s;
+    }
+    .btn-ic:hover:not(:disabled) { background: #F5F8FC; }
+    .btn-ic:disabled { opacity: .3; cursor: not-allowed; }
+    .btn-ic.peligro { color: #b91c1c; }
+    .btn-ic.peligro:hover { background: #fef2f2; }
+    .sw { width: 44px; height: 26px; border-radius: 9999px; background: #cbd5e1; position: relative; transition: background .2s; flex-shrink: 0; }
+    .sw.on { background: #1BA3C6; }
+    .sw-dot { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 9999px; background: #fff; transition: transform .2s; box-shadow: 0 1px 2px rgba(0,0,0,.3); }
+    .sw.on .sw-dot { transform: translateX(18px); }
+    .campo.err { border-color: #dc2626; }
+    .nav-item { display: flex; align-items: center; gap: .75rem; width: 100%; min-height: 44px; padding: .5rem .85rem; border-radius: .6rem; color: #cbd5e1; font-weight: 600; font-size: .92rem; text-align: left; transition: background .15s, color .15s; }
+    .nav-item:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .nav-item.activo { background: #1BA3C6; color: #fff; }
+    textarea.campo { min-height: 88px; resize: vertical; }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  </style>
+
+  <!-- Campos de formulario (una sola definición, usada en el modal y en las secciones) -->
+  <template id="tpl-campos">
+    <template x-for="c in __C__" :key="c.n">
+      <div :class="c.mitad ? '' : 'sm:col-span-2'">
+        <label class="lbl" :for="'__P__' + c.n"><span x-text="c.l"></span><span x-show="c.req" class="text-naranja"> *</span></label>
+
+        <template x-if="c.t === 'textarea' || c.t === 'lista'">
+          <textarea :id="'__P__' + c.n" x-model="__V__[c.n]" :rows="c.t === 'lista' ? 4 : 3" :maxlength="c.max" class="campo" :class="__E__[c.n] && 'err'"></textarea>
+        </template>
+
+        <template x-if="c.t === 'select'">
+          <select :id="'__P__' + c.n" x-model="__V__[c.n]" class="campo" :class="__E__[c.n] && 'err'">
+            <option value="" disabled>Elige una opción</option>
+            <template x-for="o in c.opciones" :key="o.v"><option :value="o.v" :selected="o.v === __V__[c.n]" x-text="o.l"></option></template>
+          </select>
+        </template>
+
+        <template x-if="c.t === 'icono'">
+          <div class="flex items-center gap-3">
+            <span class="w-11 h-11 rounded-full bg-marino text-white flex items-center justify-center shrink-0" x-html="itossIcono(__V__[c.n], 'w-6 h-6')"></span>
+            <select :id="'__P__' + c.n" x-model="__V__[c.n]" class="campo">
+              <template x-for="o in iconos" :key="o.v"><option :value="o.v" :selected="o.v === __V__[c.n]" x-text="o.l"></option></template>
+            </select>
+          </div>
+        </template>
+
+        <template x-if="c.t === 'imagen'">
+          <div class="flex items-start gap-3">
+            <img x-show="__V__[c.n]" :src="__V__[c.n]" alt="Vista previa" class="w-24 h-24 object-contain rounded-lg border border-slate-200 bg-white shrink-0" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
+            <div class="flex-1 min-w-0 space-y-2">
+              <template x-if="esData(__V__[c.n])">
+                <p class="text-sm bg-fondo rounded-lg px-3 min-h-[44px] flex items-center">Imagen subida (<span x-text="kb(__V__[c.n])"></span> KB)</p>
+              </template>
+              <template x-if="!esData(__V__[c.n])">
+                <input :id="'__P__' + c.n" type="text" x-model="__V__[c.n]" placeholder="Pega un enlace https://… o sube una imagen" class="campo" :class="__E__[c.n] && 'err'" autocomplete="off">
+              </template>
+              <div class="flex flex-wrap gap-2">
+                <label class="btn-s"><span x-html="ic('subir')"></span><span x-text="subiendo ? 'Subiendo…' : 'Subir imagen'"></span><input type="file" accept="image/*" class="sr-only" @change="subirImagen($event, __V__, c.n)"></label>
+                <button type="button" x-show="__V__[c.n]" @click="quitarImagen(__V__, c.n)" class="btn-s">Quitar</button>
+              </div>
+            </div>
+          </div>
+        </template>
+
+        <template x-if="!['textarea','lista','select','icono','imagen'].includes(c.t)">
+          <input :id="'__P__' + c.n" :type="c.t === 'email' ? 'email' : (c.t === 'tel' || c.t === 'wa' ? 'tel' : 'text')" :inputmode="c.t === 'wa' || c.t === 'ruc' ? 'numeric' : null" x-model="__V__[c.n]" :maxlength="c.max" class="campo" :class="__E__[c.n] && 'err'" autocomplete="off">
+        </template>
+
+        <p x-show="c.ayuda && !__E__[c.n]" class="mt-1 text-xs text-slate-500" x-text="c.ayuda"></p>
+        <p x-show="__E__[c.n]" class="mt-1 text-sm font-semibold text-red-600" role="alert" x-text="__E__[c.n]"></p>
+      </div>
+    </template>
+  </template>
+
+  <script src="./assets/js/iconos.js"></script>
+  <script src="./assets/js/store.js"></script>
+  <script src="./assets/js/admin.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body x-data="admin()" class="font-texto bg-fondo text-slate-700 antialiased pt-9"
+      x-effect="document.body.classList.toggle('overflow-hidden', modal.abierto || conf.abierto || menu)">
+
+<!-- Aviso permanente de demostración -->
+<div class="fixed top-0 inset-x-0 h-9 z-[70] bg-naranja text-white text-[11px] sm:text-sm font-semibold flex items-center justify-center px-3 text-center leading-tight">
+  Modo demostración — los cambios se guardan solo en este navegador
+</div>
+
+<!-- ============ LOGIN ============ -->
+<main x-cloak x-show="!sesion" class="min-h-[calc(100vh-2.25rem)] flex items-center justify-center px-4 py-10 bg-oscuro">
+  <div class="w-full max-w-md">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
+      <img src="./img/logo-itoss.svg" alt="ITOSS Supplies & Services" class="h-16 w-auto mx-auto" width="120" height="70">
+      <h1 class="mt-5 text-center font-titulo font-extrabold text-xl text-marino">Panel de administración</h1>
+      <p class="mt-1 text-center text-sm text-slate-500">Ingresa para editar el contenido de tu web.</p>
+      <form class="mt-6 space-y-4" @submit.prevent="entrar()" novalidate>
+        <div>
+          <label for="l-email" class="lbl">Correo</label>
+          <input id="l-email" type="email" x-model="login.email" class="campo" autocomplete="username" inputmode="email" required>
+        </div>
+        <div>
+          <label for="l-clave" class="lbl">Contraseña</label>
+          <input id="l-clave" type="password" x-model="login.clave" class="campo" autocomplete="current-password" required>
+        </div>
+        <p x-show="login.error" class="text-sm font-semibold text-red-600" role="alert" x-text="login.error"></p>
+        <button type="submit" class="btn-cta w-full">Ingresar</button>
+      </form>
+      <div class="mt-6 rounded-xl bg-fondo p-4 text-sm">
+        <p class="font-titulo font-bold text-marino">Acceso de la demostración</p>
+        <p class="mt-1">Correo: <strong>admin@itoss.pe</strong></p>
+        <p>Contraseña: <strong>itoss2026</strong></p>
+      </div>
+    </div>
+    <p class="mt-4 text-center"><a href="./index.html" class="text-sm text-white/80 hover:text-white underline">Volver al sitio</a></p>
+  </div>
+</main>
+
+<!-- ============ PANEL ============ -->
+<div x-cloak x-show="sesion">
+  <!-- Fondo oscuro del menú en móvil -->
+  <div x-show="menu" x-transition.opacity class="fixed inset-0 z-40 bg-slate-900/60 lg:hidden" @click="menu = false"></div>
+
+  <!-- Barra lateral -->
+  <aside :class="menu ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+         class="fixed top-9 bottom-0 left-0 z-50 w-72 max-w-[85vw] lg:w-64 bg-oscuro flex flex-col transition-transform duration-200" aria-label="Menú del panel">
+    <div class="p-4 flex items-center justify-between">
+      <a href="#dashboard" class="inline-block bg-white rounded-lg p-2" aria-label="Ir al resumen"><img src="./img/logo-itoss.svg" alt="ITOSS" class="h-10 w-auto" width="120" height="70"></a>
+      <button type="button" class="lg:hidden w-11 h-11 rounded-lg text-white hover:bg-white/10 flex items-center justify-center" @click="menu = false" aria-label="Cerrar menú"><span x-html="ic('x', 'w-6 h-6')"></span></button>
+    </div>
+    <nav class="flex-1 overflow-y-auto px-3 pb-4 space-y-1">
+      <template x-for="v in VISTAS" :key="v.id">
+        <button type="button" class="nav-item" :class="vista === v.id && 'activo'" :aria-current="vista === v.id ? 'page' : null" @click="ir(v.id)">
+          <span x-html="ic(v.id)"></span><span x-text="v.label"></span>
+        </button>
+      </template>
+    </nav>
+    <div class="p-3 border-t border-white/10">
+      <button type="button" class="nav-item" @click="salir()"><span x-html="ic('salir')"></span>Cerrar sesión</button>
+    </div>
+  </aside>
+
+  <div class="lg:pl-64">
+    <!-- Barra superior -->
+    <header class="sticky top-9 z-30 bg-white border-b border-slate-200">
+      <div class="px-4 sm:px-6 h-16 flex items-center gap-3">
+        <button type="button" class="lg:hidden w-11 h-11 -ml-2 rounded-lg text-marino hover:bg-fondo flex items-center justify-center" @click="menu = true" aria-label="Abrir menú" :aria-expanded="menu"><span x-html="ic('menu', 'w-7 h-7')"></span></button>
+        <h1 class="font-titulo font-extrabold text-lg sm:text-xl text-marino truncate flex-1" x-text="vistaActual.titulo"></h1>
+        <a href="./index.html" target="_blank" rel="noopener" class="btn-s !px-3 sm:!px-4"><span x-html="ic('ver')"></span><span class="hidden sm:inline">Ver sitio</span><span class="sm:hidden sr-only">Ver sitio</span></a>
+      </div>
+    </header>
+
+    <main class="px-4 sm:px-6 py-6 max-w-5xl space-y-6">
+
+      <!-- Aviso de almacenamiento -->
+      <div x-show="uso.porcentaje >= 70" class="rounded-xl bg-amber-50 border border-amber-300 text-amber-900 p-4 text-sm flex gap-3" role="alert">
+        <span class="shrink-0 mt-0.5" x-html="ic('alerta')"></span>
+        <p>Estás usando el <strong x-text="uso.porcentaje + '%'"></strong> del espacio de este navegador. Para no llenarlo, usa imágenes más livianas o pega enlaces (URL) en lugar de subir archivos.</p>
+      </div>
+
+      <!-- ===== DASHBOARD ===== -->
+      <template x-if="vista === 'dashboard'">
+        <div class="space-y-6">
+          <div class="card">
+            <h2 class="font-titulo font-bold text-lg text-marino">Bienvenido al panel</h2>
+            <p class="mt-1">Aquí puedes cambiar los textos, fotos, productos y proyectos de tu web. Cada cambio se ve al instante en el sitio (en este navegador).</p>
+            <a href="./index.html" target="_blank" rel="noopener" class="btn-cta mt-4"><span x-html="ic('ver')"></span> Ver sitio</a>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <template x-for="k in [['productos','Productos'],['proyectos','Proyectos'],['clientes','Clientes'],['alquiler','Equipos de alquiler']]" :key="k[0]">
+              <button type="button" class="card text-left hover:shadow-md transition-shadow min-h-[44px]" @click="ir(k[0])">
+                <span class="text-turquesa" x-html="ic(k[0], 'w-7 h-7')"></span>
+                <span class="block mt-2 font-titulo font-extrabold text-3xl text-marino" x-text="conteos[k[0]]"></span>
+                <span class="block text-sm" x-text="k[1]"></span>
+              </button>
+            </template>
+          </div>
+
+          <div class="card">
+            <h2 class="font-titulo font-bold text-lg text-marino">Accesos rápidos</h2>
+            <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <button type="button" class="btn-cta" @click="agregarRapido('productos')"><span x-html="ic('mas')"></span> Agregar producto</button>
+              <button type="button" class="btn-cta" @click="agregarRapido('proyectos')"><span x-html="ic('mas')"></span> Agregar proyecto</button>
+              <button type="button" class="btn-cta" @click="agregarRapido('clientes')"><span x-html="ic('mas')"></span> Agregar cliente</button>
+              <button type="button" class="btn-cta" @click="agregarRapido('alquiler')"><span x-html="ic('mas')"></span> Agregar equipo</button>
+              <button type="button" class="btn-s" @click="ir('inicio')"><span x-html="ic('inicio')"></span> Editar inicio</button>
+              <button type="button" class="btn-s" @click="ir('configuracion')"><span x-html="ic('configuracion')"></span> Datos de contacto</button>
+              <button type="button" class="btn-s" @click="ir('brochure')"><span x-html="ic('brochure')"></span> Brochure</button>
+              <button type="button" class="btn-s" @click="ir('seo')"><span x-html="ic('seo')"></span> Google (SEO)</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2 class="font-titulo font-bold text-lg text-marino">Espacio del navegador</h2>
+            <p class="mt-1 text-sm">Las fotos que subes se guardan en este navegador (límite aproximado: 5 MB).</p>
+            <div class="mt-3 h-3 rounded-full bg-slate-200 overflow-hidden"><div class="h-full rounded-full" :class="uso.porcentaje >= 70 ? 'bg-naranja' : 'bg-turquesa'" :style="'width:' + Math.max(uso.porcentaje, 2) + '%'"></div></div>
+            <p class="mt-2 text-sm"><span x-text="(uso.usado / 1048576).toFixed(2)"></span> MB usados (<span x-text="uso.porcentaje"></span>%)</p>
+          </div>
+        </div>
+      </template>
+
+      <!-- ===== MÓDULOS ===== -->
+      <template x-for="b in vistaActual.bloques" :key="b.id">
+        <section class="card">
+          <h2 class="font-titulo font-bold text-lg text-marino" x-text="b.titulo"></h2>
+
+          <!-- Formulario -->
+          <template x-if="b.tipo === 'form'">
+            <form class="mt-4 grid sm:grid-cols-2 gap-4" @submit.prevent="guardarForm(b)" novalidate>
+              <div data-campos="b.campos" data-valores="estado[b.id].valores" data-errores="estado[b.id].errores" data-prefijo="f-"></div>
+              <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
+                <button type="submit" class="btn-cta w-full sm:w-auto" :disabled="estado[b.id].guardando"><span x-text="estado[b.id].guardando ? 'Guardando…' : 'Guardar cambios'"></span></button>
+              </div>
+            </form>
+          </template>
+
+          <!-- Lista -->
+          <template x-if="b.tipo === 'lista'">
+            <div class="mt-4">
+              <div class="flex flex-col sm:flex-row gap-3">
+                <div class="relative flex-1">
+                  <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" x-html="ic('buscar')"></span>
+                  <label :for="'q-' + b.id" class="sr-only">Buscar</label>
+                  <input :id="'q-' + b.id" type="search" x-model="estado[b.id].q" placeholder="Buscar…" class="campo !pl-10">
+                </div>
+                <button type="button" class="btn-cta" @click="nuevo(b)"><span x-html="ic('mas')"></span><span x-text="'Agregar ' + b.singular"></span></button>
+              </div>
+
+              <p class="mt-3 text-sm text-slate-500" x-text="estado[b.id].items.length + (estado[b.id].items.length === 1 ? ' elemento' : ' elementos')"></p>
+
+              <div class="mt-3 space-y-3">
+                <template x-for="it in filtrados(b)" :key="it.id">
+                  <article class="rounded-xl border border-slate-200 p-3 flex flex-col gap-3 md:flex-row md:items-center" :class="it.activo === false && 'opacity-60'">
+                    <div class="flex items-center gap-3 md:flex-1 min-w-0">
+                      <template x-if="!!b.fila.imagen">
+                        <img :src="b.fila.imagen(it)" alt="" class="w-16 h-16 md:w-14 md:h-14 object-cover rounded-lg bg-slate-100 border border-slate-100 shrink-0" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
+                      </template>
+                      <template x-if="!!b.fila.icono">
+                        <span class="w-12 h-12 rounded-full bg-marino text-white flex items-center justify-center shrink-0" x-html="itossIcono(b.fila.icono(it), 'w-6 h-6')"></span>
+                      </template>
+                      <div class="min-w-0">
+                        <p class="font-titulo font-bold text-marino leading-snug break-words" x-text="b.fila.titulo(it)"></p>
+                        <p x-show="!!b.fila.sub" class="text-sm text-slate-500 break-words" x-text="b.fila.sub ? b.fila.sub(it) : ''"></p>
+                      </div>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-x-5">
+                      <template x-for="t in b.toggles" :key="t.n">
+                        <button type="button" role="switch" :aria-checked="!!it[t.n]" class="flex items-center gap-2 min-h-[44px] text-sm" @click="alternar(b, it, t.n)">
+                          <span class="sw" :class="it[t.n] && 'on'"><span class="sw-dot"></span></span><span x-text="t.l"></span>
+                        </button>
+                      </template>
+                    </div>
+                    <div class="flex items-center gap-2 md:justify-end">
+                      <template x-if="!estado[b.id].q.trim()">
+                        <div class="flex gap-2">
+                          <button type="button" class="btn-ic" :disabled="esPrimero(b, it)" @click="mover(b, it, -1)" aria-label="Subir"><span x-html="ic('arriba')"></span></button>
+                          <button type="button" class="btn-ic" :disabled="esUltimo(b, it)" @click="mover(b, it, 1)" aria-label="Bajar"><span x-html="ic('abajo')"></span></button>
+                        </div>
+                      </template>
+                      <button type="button" class="btn-ic" @click="editar(b, it)" aria-label="Editar"><span x-html="ic('editar')"></span></button>
+                      <button type="button" class="btn-ic peligro" @click="eliminar(b, it)" aria-label="Eliminar"><span x-html="ic('borrar')"></span></button>
+                    </div>
+                  </article>
+                </template>
+              </div>
+
+              <p x-show="estado[b.id].items.length === 0" class="mt-6 text-center text-slate-500">Todavía no hay elementos. Pulsa «Agregar» para crear el primero.</p>
+              <p x-show="estado[b.id].items.length > 0 && filtrados(b).length === 0" class="mt-6 text-center text-slate-500">No encontramos resultados para tu búsqueda.</p>
+            </div>
+          </template>
+
+          <!-- Acciones sobre los datos -->
+          <template x-if="b.tipo === 'acciones'">
+            <div class="mt-3 space-y-5">
+              <p>Todo lo que cambias aquí se guarda solo en este navegador. Para pasar los cambios a la web real, exporta los datos y entrégaselos a tu desarrollador.</p>
+              <div class="flex flex-col sm:flex-row gap-3">
+                <button type="button" class="btn-cta" @click="exportar()"><span x-html="ic('descargar')"></span> Exportar datos</button>
+                <button type="button" class="btn-s !border-red-600 !text-red-700 hover:!bg-red-600 hover:!text-white" @click="restablecer()">Restablecer demo</button>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-marino">Espacio usado en este navegador</p>
+                <div class="mt-2 h-3 rounded-full bg-slate-200 overflow-hidden"><div class="h-full rounded-full" :class="uso.porcentaje >= 70 ? 'bg-naranja' : 'bg-turquesa'" :style="'width:' + Math.max(uso.porcentaje, 2) + '%'"></div></div>
+                <p class="mt-1 text-sm"><span x-text="(uso.usado / 1048576).toFixed(2)"></span> MB de 5 MB (<span x-text="uso.porcentaje"></span>%)</p>
+              </div>
+            </div>
+          </template>
+        </section>
+      </template>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ MODAL CREAR / EDITAR ============ -->
+<div x-cloak x-show="modal.abierto" class="fixed inset-0 z-[80]" @keydown.escape.window="modal.abierto && cerrarModal()">
+  <div class="absolute inset-0 bg-slate-900/60" @click="cerrarModal()"></div>
+  <template x-if="modal.abierto">
+    <div role="dialog" aria-modal="true" aria-labelledby="modal-titulo"
+         class="absolute inset-0 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-[680px] md:max-w-[92vw] md:max-h-[90vh] bg-white md:rounded-2xl shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between gap-3 px-4 sm:px-6 h-16 border-b border-slate-200 shrink-0">
+        <h2 id="modal-titulo" class="font-titulo font-extrabold text-lg text-marino truncate" x-text="(modal.modo === 'crear' ? 'Agregar ' : 'Editar ') + modal.bloque.singular"></h2>
+        <button type="button" class="w-11 h-11 -mr-2 rounded-lg text-slate-500 hover:bg-fondo flex items-center justify-center" @click="cerrarModal()" aria-label="Cerrar"><span x-html="ic('x', 'w-6 h-6')"></span></button>
+      </div>
+      <form class="flex flex-col flex-1 min-h-0" @submit.prevent="guardarModal()" novalidate>
+        <div id="modal-campos" class="flex-1 overflow-y-auto p-4 sm:p-6 grid sm:grid-cols-2 gap-4 content-start">
+          <div data-campos="modal.bloque.campos" data-valores="modal.valores" data-errores="modal.errores" data-prefijo="m-"></div>
+        </div>
+        <div class="px-4 sm:px-6 py-4 border-t border-slate-200 flex flex-col-reverse sm:flex-row sm:justify-end gap-3 shrink-0 bg-white md:rounded-b-2xl">
+          <button type="button" class="btn-s" @click="cerrarModal()">Cancelar</button>
+          <button type="submit" class="btn-cta" :disabled="modal.guardando"><span x-text="modal.guardando ? 'Guardando…' : 'Guardar'"></span></button>
+        </div>
+      </form>
+    </div>
+  </template>
+</div>
+
+<!-- ============ CONFIRMACIÓN ============ -->
+<div x-cloak x-show="conf.abierto" class="fixed inset-0 z-[85] flex items-center justify-center p-4" @keydown.escape.window="conf.abierto && responderConf(false)">
+  <div class="absolute inset-0 bg-slate-900/60" @click="responderConf(false)"></div>
+  <div role="alertdialog" aria-modal="true" aria-labelledby="conf-titulo" class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6">
+    <h2 id="conf-titulo" class="font-titulo font-extrabold text-lg text-marino" x-text="conf.titulo"></h2>
+    <p class="mt-2" x-text="conf.texto"></p>
+    <div class="mt-6 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
+      <button type="button" class="btn-s" @click="responderConf(false)">Cancelar</button>
+      <button type="button" class="btn-cta" :class="conf.peligro && '!bg-red-600 hover:!bg-red-700'" @click="responderConf(true)" x-text="conf.ok"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ AVISOS ============ -->
+<div class="fixed bottom-4 inset-x-0 z-[90] px-4 flex flex-col items-center gap-2 pointer-events-none" aria-live="polite">
+  <template x-for="t in toasts" :key="t.id">
+    <div class="pointer-events-auto w-full max-w-md rounded-xl px-4 py-3 shadow-lg text-white font-semibold text-sm flex items-start gap-2.5"
+         :class="t.tipo === 'error' ? 'bg-red-600' : (t.tipo === 'aviso' ? 'bg-amber-600' : 'bg-emerald-600')" :role="t.tipo === 'error' ? 'alert' : 'status'">
+      <span class="shrink-0 mt-0.5" x-html="ic(t.tipo === 'ok' ? 'check' : 'alerta')"></span><span x-text="t.texto"></span>
+    </div>
+  </template>
+</div>
+
+<!-- Expande los campos reutilizables dentro de cada plantilla (antes de que arranque Alpine) -->
+<script>
+  (function () {
+    var base = document.getElementById('tpl-campos').innerHTML;
+    function expandir(raiz) {
+      raiz.querySelectorAll('[data-campos]').forEach(function (ph) {
+        var h = base.replace(/__C__/g, ph.getAttribute('data-campos'))
+          .replace(/__V__/g, ph.getAttribute('data-valores'))
+          .replace(/__E__/g, ph.getAttribute('data-errores'))
+          .replace(/__P__/g, ph.getAttribute('data-prefijo'));
+        ph.insertAdjacentHTML('beforebegin', h);
+        ph.remove();
+      });
+      raiz.querySelectorAll('template').forEach(function (t) { expandir(t.content); });
+    }
+    expandir(document.body);
+  })();
+</script>
+
+</body>
+</html>
