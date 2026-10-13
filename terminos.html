@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Términos y condiciones | ITOSS Supplies & Services</title>
+  <meta name="description" content="Términos y condiciones de uso del sitio web de ITOSS Supplies & Services.">
+  <meta name="theme-color" content="#0B3D91">
+  <link rel="icon" type="image/svg+xml" href="./img/favicon.svg">
+  <link rel="canonical" href="https://kitikazis.github.io/itoss-web/terminos.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_PE">
+  <meta property="og:site_name" content="ITOSS Supplies & Services">
+  <meta property="og:title" content="Términos y condiciones | ITOSS Supplies & Services">
+  <meta property="og:description" content="Términos y condiciones de uso del sitio web de ITOSS Supplies & Services.">
+  <meta property="og:url" content="https://kitikazis.github.io/itoss-web/terminos.html">
+  <!-- REEMPLAZAR: imagen Open Graph (1200x630) -->
+  <meta property="og:image" content="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1200&h=630&q=70">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            marino: '#0B3D91',
+            oscuro: '#0A2A5E',
+            turquesa: '#1BA3C6',
+            naranja: '#F26A1B',
+            fondo: '#F5F8FC'
+          },
+          fontFamily: {
+            titulo: ['Montserrat', 'sans-serif'],
+            texto: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="./assets/css/styles.css">
+  <script src="./assets/js/main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+</head>
+<body class="font-texto bg-fondo text-slate-700 antialiased">
+
+<a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-3">Saltar al contenido</a>
+<header class="sticky top-0 z-50 shadow-md" x-data="{ open: false, srv: false }" @keydown.escape.window="open = false">
+  <!-- Topbar -->
+  <div class="bg-oscuro text-white text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between sm:justify-end gap-4 sm:gap-6 min-h-[36px]">
+      <a data-tel href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>(+511) 710 6880</span></a>
+      <a data-mail href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>comercial@itoss.pe</span></a>
+    </div>
+  </div>
+  <!-- Barra principal -->
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 lg:h-20 gap-4">
+      <a href="./index.html" class="shrink-0" aria-label="ITOSS Supplies & Services - Inicio">
+        <!-- REEMPLAZAR: logo real -->
+        <img src="./img/logo-itoss.png" alt="ITOSS Supplies & Services" class="h-10 lg:h-12 w-auto" width="180" height="50">
+      </a>
+
+      <!-- Nav escritorio -->
+      <nav class="hidden lg:flex items-center gap-1 font-titulo font-semibold text-sm text-marino" aria-label="Principal">
+        <a href="./index.html" class="px-3 py-2 hover:text-turquesa">Inicio</a>
+        <a href="./index.html#nosotros" class="px-3 py-2 hover:text-turquesa">Nosotros</a>
+        <div class="relative" x-data="{ o: false }" @mouseenter="o = true" @mouseleave="o = false" @keydown.escape="o = false">
+          <button type="button" class="px-3 py-2 hover:text-turquesa flex items-center gap-1" @click="o = !o" :aria-expanded="o" aria-haspopup="true">
+            Servicios <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div x-cloak x-show="o" x-transition.opacity class="absolute left-0 top-full pt-2 w-72">
+            <ul class="bg-white rounded-lg shadow-xl border border-slate-100 py-2">
+              <li><a href="./productos.html" class="block px-4 py-2.5 hover:bg-fondo hover:text-turquesa">Sistemas de bombeo</a></li>
+              <li><a href="./index.html#srv-dragado" class="block px-4 py-2.5 hover:bg-fondo hover:text-turquesa">Dragado y limpieza de pozas</a></li>
+              <li><a href="./index.html#srv-flotantes" class="block px-4 py-2.5 hover:bg-fondo hover:text-turquesa">Sistemas flotantes</a></li>
+              <li><a href="./alquiler.html" class="block px-4 py-2.5 hover:bg-fondo hover:text-turquesa">Alquiler y reparación</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="./productos.html" class="px-3 py-2 hover:text-turquesa">Productos</a>
+        <a href="./alquiler.html" class="px-3 py-2 hover:text-turquesa">Alquiler</a>
+        <a href="./proyectos.html" class="px-3 py-2 hover:text-turquesa">Proyectos</a>
+        <a href="./index.html#clientes" class="px-3 py-2 hover:text-turquesa">Clientes</a>
+        <a href="./index.html#contacto" class="px-3 py-2 hover:text-turquesa">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a data-wa="Hola, quiero información" href="#" class="btn-cta hidden sm:inline-flex">Contáctanos</a>
+        <button type="button" class="lg:hidden w-11 h-11 flex items-center justify-center text-marino rounded-md hover:bg-fondo" @click="open = !open" :aria-expanded="open" aria-label="Abrir menú">
+          <span x-show="!open"><svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></span>
+          <span x-cloak x-show="open"><svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil -->
+    <nav x-cloak x-show="open" x-transition class="lg:hidden bg-white border-t border-slate-100 max-h-[calc(100vh-100px)] overflow-y-auto" aria-label="Móvil">
+      <ul class="px-4 py-2 font-titulo font-semibold text-marino">
+        <li><a href="./index.html" class="flex items-center min-h-[48px]">Inicio</a></li>
+        <li><a href="./index.html#nosotros" class="flex items-center min-h-[48px]">Nosotros</a></li>
+        <li>
+          <button type="button" class="w-full flex items-center justify-between min-h-[48px]" @click="srv = !srv" :aria-expanded="srv">
+            Servicios <span :class="srv && 'rotate-180'" class="transition-transform"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+          </button>
+          <ul x-cloak x-show="srv" x-transitionclass="pl-4 border-l-2 border-turquesa ml-1 font-medium">
+            <li><a href="./productos.html" class="flex items-center min-h-[44px]">Sistemas de bombeo</a></li>
+            <li><a href="./index.html#srv-dragado" class="flex items-center min-h-[44px]">Dragado y limpieza de pozas</a></li>
+            <li><a href="./index.html#srv-flotantes" class="flex items-center min-h-[44px]">Sistemas flotantes</a></li>
+            <li><a href="./alquiler.html" class="flex items-center min-h-[44px]">Alquiler y reparación</a></li>
+          </ul>
+        </li>
+        <li><a href="./productos.html" class="flex items-center min-h-[48px]">Productos</a></li>
+        <li><a href="./alquiler.html" class="flex items-center min-h-[48px]">Alquiler</a></li>
+        <li><a href="./proyectos.html" class="flex items-center min-h-[48px]">Proyectos</a></li>
+        <li><a href="./index.html#clientes" class="flex items-center min-h-[48px]">Clientes</a></li>
+        <li><a href="./index.html#contacto" class="flex items-center min-h-[48px]">Contacto</a></li>
+        <li class="py-3"><a data-wa="Hola, quiero información" href="#" class="btn-cta w-full">Contáctanos</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+<section class="relative bg-oscuro text-white overflow-hidden">
+  <!-- REEMPLAZAR: imagen de banner -->
+  <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=1600&q=70" alt="Oficinas ITOSS" class="absolute inset-0 w-full h-full object-cover opacity-30" onerror="this.remove()">
+  <div class="relative max-w-7xl mx-auto px-4 py-14 lg:py-20">
+    <p class="eyebrow">LEGAL</p>
+    <h1 class="font-titulo font-extrabold text-3xl sm:text-4xl lg:text-5xl mt-2">Términos y condiciones</h1>
+    <p class="mt-4 max-w-2xl text-slate-200">Condiciones de uso de este sitio web.</p>
+  </div>
+</section>
+
+<section class="py-12 lg:py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4 leading-relaxed">
+    <p class="text-sm text-slate-500">Última actualización: 2026. <!-- REVISAR con asesoría legal antes de publicar --></p>
+    <h2 class="font-titulo font-bold text-marino text-xl mt-8">1. Uso del sitio</h2><p class="mt-2">Al navegar este sitio aceptas estos términos. El contenido es informativo y puede cambiar sin previo aviso.</p><h2 class="font-titulo font-bold text-marino text-xl mt-8">2. Cotizaciones</h2><p class="mt-2">Las solicitudes enviadas por el sitio o WhatsApp no constituyen una orden de compra. Precios, plazos y disponibilidad se confirman en la cotización formal.</p><h2 class="font-titulo font-bold text-marino text-xl mt-8">3. Alquiler y reparación</h2><p class="mt-2">Los servicios de alquiler y reparación se rigen por el contrato o la orden de servicio que se acuerde con cada cliente.</p><h2 class="font-titulo font-bold text-marino text-xl mt-8">4. Propiedad intelectual</h2><p class="mt-2">Marcas, logos, textos e imágenes pertenecen a ITOSS Supplies &amp; Services o a sus respectivos titulares, y no pueden usarse sin autorización.</p><h2 class="font-titulo font-bold text-marino text-xl mt-8">5. Marcas de terceros</h2><p class="mt-2">MEUDY, Goodwin, HCP, OKFLOW, NASSAR Electronics e ITOFLOT son marcas de sus respectivos titulares.</p><h2 class="font-titulo font-bold text-marino text-xl mt-8">6. Contacto</h2><p class="mt-2">Para consultas sobre estos términos escribe a comercial@itoss.pe.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="bg-oscuro text-slate-300 text-sm">
+  <div class="max-w-7xl mx-auto px-4 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <a href="./index.html" class="inline-block bg-white rounded-lg p-2" aria-label="ITOSS - Inicio">
+        <!-- REEMPLAZAR: logo real -->
+        <img src="./img/logo-itoss.png" alt="ITOSS Supplies & Services" class="h-10 w-auto" width="180" height="50" loading="lazy">
+      </a>
+      <p class="mt-4 leading-relaxed">Especialistas en sistemas integrales de bombeo, soluciones flotantes y servicios para la industria y minería.</p>
+      <div class="mt-5 flex gap-3">
+        <!-- REEMPLAZAR: URLs reales de redes sociales -->
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+      </div>
+    </div>
+
+    <div>
+      <h2 class="font-titulo font-bold text-white text-base mb-3">Misión</h2>
+      <p class="leading-relaxed">Brindar soluciones integrales de bombeo, sistemas flotantes y servicios especializados que aseguren la continuidad operativa de nuestros clientes.</p>
+      <h2 class="font-titulo font-bold text-white text-base mt-5 mb-3">Visión</h2>
+      <p class="leading-relaxed">Ser la empresa referente en soluciones de bombeo y sistemas flotantes para la industria y minería en el Perú.</p>
+    </div>
+
+    <div>
+      <h2 class="font-titulo font-bold text-white text-base mb-3">Enlaces rápidos</h2>
+      <ul class="space-y-1">
+        <li><a href="./index.html" class="inline-block py-2 hover:text-turquesa">Inicio</a></li>
+        <li><a href="./index.html#nosotros" class="inline-block py-2 hover:text-turquesa">Nosotros</a></li>
+        <li><a href="./index.html#servicios" class="inline-block py-2 hover:text-turquesa">Servicios</a></li>
+        <li><a href="./productos.html" class="inline-block py-2 hover:text-turquesa">Productos</a></li>
+        <li><a href="./alquiler.html" class="inline-block py-2 hover:text-turquesa">Alquiler</a></li>
+        <li><a href="./proyectos.html" class="inline-block py-2 hover:text-turquesa">Proyectos</a></li>
+        <li><a href="./index.html#contacto" class="inline-block py-2 hover:text-turquesa">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-titulo font-bold text-white text-base mb-3">Contacto</h2>
+      <ul class="space-y-3">
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><a href="tel:+5117106880" class="hover:text-turquesa">(+511) 710 6880</a> / <a href="tel:+5117106888" class="hover:text-turquesa">(+511) 710 6888</a></span></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg><a data-wa="Hola, quiero información" href="#" class="hover:text-turquesa">(+51) 902 752 445</a></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a data-mail href="#" class="hover:text-turquesa">comercial@itoss.pe</a></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Lima - Perú</span></li>
+        <li class="text-xs text-slate-400">RUC 20512345678 <!-- VERIFICAR RUC --></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 pt-5 pb-24 lg:pb-5 flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+      <p>&copy; 2026 ITOSS Supplies &amp; Services. Todos los derechos reservados.</p>
+      <p class="flex gap-5">
+        <a href="./politica-privacidad.html" class="py-2 hover:text-turquesa">Política de privacidad</a>
+        <a href="./terminos.html" class="py-2 hover:text-turquesa">Términos y condiciones</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a data-wa="Hola, quiero información" href="#" class="wa-float" aria-label="Escríbenos por WhatsApp">
+  <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+</a>
+
+</body>
+</html>
