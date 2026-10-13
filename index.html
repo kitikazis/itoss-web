@@ -42,18 +42,20 @@
     }
   </script>
   <link rel="stylesheet" href="./assets/css/styles.css">
+  <script src="./assets/js/iconos.js"></script>
+  <script src="./assets/js/store.js"></script>
   <script src="./assets/js/main.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 </head>
-<body class="font-texto bg-fondo text-slate-700 antialiased">
+<body data-pagina="index" class="font-texto bg-fondo text-slate-700 antialiased">
 
 <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:bg-white focus:p-3">Saltar al contenido</a>
 <header class="sticky top-0 z-50 shadow-md" x-data="{ open: false, srv: false }" @keydown.escape.window="open = false">
   <!-- Topbar -->
   <div class="bg-oscuro text-white text-xs sm:text-sm">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between sm:justify-end gap-4 sm:gap-6 min-h-[36px]">
-      <a data-tel href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>(+511) 710 6880</span></a>
-      <a data-mail href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>comercial@itoss.pe</span></a>
+      <a data-tel href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-bind="settings.telefono">(+511) 710 6880</span></a>
+      <a data-mail href="#" class="flex items-center gap-1.5 hover:text-turquesa py-2"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span data-bind="settings.correo">comercial@itoss.pe</span></a>
     </div>
   </div>
   <!-- Barra principal -->
@@ -61,7 +63,7 @@
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16 lg:h-20 gap-4">
       <a href="./index.html" class="shrink-0" aria-label="ITOSS Supplies & Services - Inicio">
         
-        <img src="./img/logo-itoss.svg" alt="ITOSS Supplies & Services" class="h-12 lg:h-14 w-auto" width="120" height="70">
+        <img data-bind-src="settings.logo" src="./img/logo-itoss.svg" alt="ITOSS Supplies & Services" class="h-12 lg:h-14 w-auto" width="120" height="70">
       </a>
 
       <!-- Nav escritorio -->
@@ -129,22 +131,22 @@
 <!-- 1. HERO -->
 <section class="relative bg-oscuro text-white">
   <!-- REEMPLAZAR: imagen de fondo del hero -->
-  <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1920&q=70" alt="Equipos de bombeo industrial en operación" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
+  <img data-bind-src="home.hero.imagen" src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1920&q=70" alt="Equipos de bombeo industrial en operación" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
   <div class="absolute inset-0 bg-gradient-to-r from-oscuro/95 via-marino/80 to-marino/40"></div>
   <div class="relative max-w-7xl mx-auto px-4 pt-16 pb-28 lg:pt-28 lg:pb-40">
-    <p class="eyebrow">SOLUCIONES INTEGRALES</p>
-    <h1 class="font-titulo font-extrabold text-3xl sm:text-4xl lg:text-6xl leading-tight mt-3 max-w-3xl">Sistemas de bombeo para la industria y minería</h1>
-    <p class="mt-5 text-base lg:text-lg max-w-xl text-slate-100">Equipos, sistemas flotantes y servicios especializados para operaciones de alto rendimiento.</p>
+    <p class="eyebrow" data-bind="home.hero.eyebrow">SOLUCIONES INTEGRALES</p>
+    <h1 data-bind="home.hero.titulo" class="font-titulo font-extrabold text-3xl sm:text-4xl lg:text-6xl leading-tight mt-3 max-w-3xl">Sistemas de bombeo para la industria y minería</h1>
+    <p data-bind="home.hero.subtitulo" class="mt-5 text-base lg:text-lg max-w-xl text-slate-100">Equipos, sistemas flotantes y servicios especializados para operaciones de alto rendimiento.</p>
     <div class="mt-8 flex flex-col sm:flex-row gap-3">
-      <a data-wa="Hola, quiero hablar con un especialista" href="#" class="btn-cta">Habla con un especialista</a>
-      <a href="#servicios" class="btn-outline">Conoce nuestras soluciones</a>
+      <a data-wa="Hola, quiero hablar con un especialista" data-bind="home.hero.boton_principal" href="#" class="btn-cta">Habla con un especialista</a>
+      <a href="#servicios" data-bind="home.hero.boton_secundario" class="btn-outline">Conoce nuestras soluciones</a>
     </div>
   </div>
 </section>
 
 <!-- 2. BENEFICIOS -->
 <section class="relative z-10 -mt-12 lg:-mt-16 px-4" aria-label="Beneficios">
-  <ul class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:divide-x divide-slate-100">
+  <ul data-render="beneficios" class="max-w-6xl mx-auto bg-white rounded-2xl shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:divide-x divide-slate-100">
     
       <li class="flex items-center gap-3 p-4">
         <span class="shrink-0 w-12 h-12 rounded-full bg-turquesa/10 text-turquesa flex items-center justify-center"><svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
@@ -173,7 +175,7 @@
   <div class="max-w-7xl mx-auto px-4">
     <p class="eyebrow">NUESTROS SERVICIOS</p>
     <h2 class="titulo-seccion">Soluciones para su operación</h2>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <div data-render="servicios" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       
       <a id="srv-bombeo" href="./productos.html" class="group flex flex-col rounded-2xl overflow-hidden text-white shadow-lg hover:-translate-y-1 transition-transform scroll-mt-28 bg-marino">
         <!-- REEMPLAZAR: imagen del servicio -->
@@ -223,7 +225,7 @@
   <div class="max-w-7xl mx-auto px-4">
     <p class="eyebrow text-center">NUESTROS CLIENTES</p>
     <h2 class="titulo-seccion text-center">Empresas que confían en nosotros</h2>
-    <ul class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+    <ul data-render="clientes" class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
       
       <li class="flex items-center justify-center h-24 rounded-xl border border-slate-100 bg-fondo p-4">
         <!-- REEMPLAZAR LOGO CLIENTE -->
@@ -258,7 +260,7 @@
   <div class="max-w-7xl mx-auto px-4">
     <p class="eyebrow">NOSOTROS</p>
     <h2 class="titulo-seccion">¿Por qué elegirnos?</h2>
-    <ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+    <ul data-render="razones" class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       
       <li class="bg-white rounded-xl p-6 text-center shadow-sm">
         <span class="mx-auto w-14 h-14 rounded-full bg-marino text-white flex items-center justify-center"><svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>
@@ -284,7 +286,7 @@
 </section>
 
 <!-- 6. PROYECTOS DESTACADOS -->
-<section class="py-16 bg-white" x-data="proyectos()">
+<section class="py-16 bg-white" x-data="proyectos(true)">
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-end justify-between gap-4">
       <div>
@@ -297,17 +299,19 @@
       </div>
     </div>
     <div x-ref="pista" class="carrusel mt-8">
-      <template x-for="p in items" :key="p.nombre">
+      <template x-for="n in (cargando ? 3 : 0)" :key="'sk'+n"><div class="rounded-2xl bg-fondo h-72 animate-pulse" aria-hidden="true"></div></template>
+      <template x-for="p in items" :key="p.id">
         <article class="rounded-2xl overflow-hidden bg-fondo shadow-sm">
-          <img :src="p.imagen" :alt="p.nombre" class="w-full h-56 object-cover" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
+          <img :src="p.foto" :alt="p.titulo" class="w-full h-56 object-cover" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
           <div class="p-4 flex items-center justify-between gap-3">
-            <!-- REEMPLAZAR UBICACIÓN (editar en assets/js/main.js) -->
+            <!-- REEMPLAZAR UBICACIÓN (editar desde el panel /admin.html) -->
             <span class="flex items-center gap-1.5 text-sm font-semibold text-marino"><svg class="w-5 h-5 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span x-text="p.ubicacion"></span></span>
             <span class="text-xs font-bold uppercase tracking-wide bg-turquesa/10 text-turquesa px-3 py-1 rounded-full" x-text="p.categoria"></span>
           </div>
         </article>
       </template>
     </div>
+    <p x-cloak x-show="error" class="mt-6 text-center text-slate-500">No pudimos cargar los proyectos. <a data-wa="Hola, quiero ver sus proyectos" href="#" class="text-marino underline">Escríbenos por WhatsApp</a>.</p>
     <div class="mt-8 text-center">
       <a href="./proyectos.html" class="btn-cta">Ver todos los proyectos</a>
     </div>
@@ -372,11 +376,11 @@
       <!-- Brochure -->
       <aside class="bg-marino text-white rounded-2xl overflow-hidden flex flex-col self-start">
         <!-- REEMPLAZAR: imagen de portada del brochure -->
-        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=70" alt="Portada del brochure corporativo ITOSS" class="w-full h-48 object-cover" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
+        <img data-bind-src="settings.brochure_portada" src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=70" alt="Portada del brochure corporativo ITOSS" class="w-full h-48 object-cover" loading="lazy" onerror="this.onerror=null;this.src='./img/placeholder.svg'">
         <div class="p-6">
           <h3 class="font-titulo font-bold text-xl">Brochure Corporativo 2026</h3>
           <p class="mt-2 text-slate-200 text-sm">Conoce nuestros equipos, servicios y proyectos.</p>
-          <a href="./docs/brochure-itoss.pdf" download class="btn-cta mt-5 w-full"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg> Descargar brochure</a>
+          <a data-bind-href="settings.brochure_pdf" href="./docs/brochure-itoss.pdf" download class="btn-cta mt-5 w-full"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg> Descargar brochure</a>
         </div>
       </aside>
     </div>
@@ -391,23 +395,23 @@
     <div>
       <a href="./index.html" class="inline-block bg-white rounded-lg p-2" aria-label="ITOSS - Inicio">
         
-        <img src="./img/logo-itoss.svg" alt="ITOSS Supplies & Services" class="h-12 w-auto" width="120" height="70" loading="lazy">
+        <img data-bind-src="settings.logo" src="./img/logo-itoss.svg" alt="ITOSS Supplies & Services" class="h-12 w-auto" width="120" height="70" loading="lazy">
       </a>
-      <p class="mt-4 leading-relaxed">Especialistas en sistemas integrales de bombeo, soluciones flotantes y servicios para la industria y minería.</p>
+      <p data-bind="home.descripcion_footer" class="mt-4 leading-relaxed">Especialistas en sistemas integrales de bombeo, soluciones flotantes y servicios para la industria y minería.</p>
       <div class="mt-5 flex gap-3">
         <!-- REEMPLAZAR: URLs reales de redes sociales -->
-        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a data-bind-href="settings.linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a data-bind-href="settings.youtube" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+        <a data-bind-href="settings.facebook" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a data-bind-href="settings.instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="social"><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a>
       </div>
     </div>
 
     <div>
       <h2 class="font-titulo font-bold text-white text-base mb-3">Misión</h2>
-      <p class="leading-relaxed">Brindar soluciones integrales de bombeo, sistemas flotantes y servicios especializados que aseguren la continuidad operativa de nuestros clientes.</p>
+      <p data-bind="home.mision" class="leading-relaxed">Brindar soluciones integrales de bombeo, sistemas flotantes y servicios especializados que aseguren la continuidad operativa de nuestros clientes.</p>
       <h2 class="font-titulo font-bold text-white text-base mt-5 mb-3">Visión</h2>
-      <p class="leading-relaxed">Ser la empresa referente en soluciones de bombeo y sistemas flotantes para la industria y minería en el Perú.</p>
+      <p data-bind="home.vision" class="leading-relaxed">Ser la empresa referente en soluciones de bombeo y sistemas flotantes para la industria y minería en el Perú.</p>
     </div>
 
     <div>
@@ -426,11 +430,11 @@
     <div>
       <h2 class="font-titulo font-bold text-white text-base mb-3">Contacto</h2>
       <ul class="space-y-3">
-        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><a href="tel:+5117106880" class="hover:text-turquesa">(+511) 710 6880</a> / <a href="tel:+5117106888" class="hover:text-turquesa">(+511) 710 6888</a></span></li>
-        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg><a data-wa="Hola, quiero información" href="#" class="hover:text-turquesa">(+51) 902 752 445</a></li>
-        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a data-mail href="#" class="hover:text-turquesa">comercial@itoss.pe</a></li>
-        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Lima - Perú</span></li>
-        <li class="text-xs text-slate-400">RUC 20512345678 <!-- VERIFICAR RUC --></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-render="telefonos"><a href="tel:+5117106880" class="hover:text-turquesa">(+511) 710 6880</a> / <a href="tel:+5117106888" class="hover:text-turquesa">(+511) 710 6888</a></span></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg><a data-wa="Hola, quiero información" data-bind="settings.whatsapp" data-bind-format="wa" href="#" class="hover:text-turquesa">(+51) 902 752 445</a></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a data-mail data-bind="settings.correo" href="#" class="hover:text-turquesa">comercial@itoss.pe</a></li>
+        <li class="flex gap-2"><svg class="w-5 h-5 shrink-0 text-turquesa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-bind="settings.direccion">Lima - Perú</span></li>
+        <li class="text-xs text-slate-400" data-bind="settings.ruc" data-bind-prefix="RUC ">RUC 20512345678</li>
       </ul>
     </div>
   </div>
