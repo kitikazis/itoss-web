@@ -1,0 +1,73 @@
+{
+  "hero": {
+    "eyebrow": "SOLUCIONES INTEGRALES",
+    "titulo": "Sistemas de bombeo para la industria y minería",
+    "subtitulo": "Equipos, sistemas flotantes y servicios especializados para operaciones de alto rendimiento.",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1920&q=70",
+    "boton_principal": "Habla con un especialista",
+    "boton_secundario": "Conoce nuestras soluciones"
+  },
+  "beneficios": [
+    {
+      "id": "575dcb54-1bd6-407a-bffe-478aa489aa2c",
+      "orden": 1,
+      "icono": "escudo",
+      "texto": "Equipos de alta calidad",
+      "activo": true
+    },
+    {
+      "id": "49c30698-a916-417c-a54b-79b31cc8df30",
+      "orden": 2,
+      "icono": "ajustes",
+      "texto": "Soluciones a medida para su operación",
+      "activo": true
+    },
+    {
+      "id": "570e0e13-e709-462f-8302-6641d79ab33f",
+      "orden": 3,
+      "icono": "soporte",
+      "texto": "Soporte técnico especializado",
+      "activo": true
+    },
+    {
+      "id": "33633357-7a87-4166-b7d1-35a361dbfd8a",
+      "orden": 4,
+      "icono": "herramienta",
+      "texto": "Alquiler y reparación multimarca",
+      "activo": true
+    }
+  ],
+  "razones": [
+    {
+      "id": "a92fd7b1-e970-41c1-b914-f3bd9734511e",
+      "orden": 1,
+      "icono": "maletin",
+      "texto": "Experiencia en industria y minería",
+      "activo": true
+    },
+    {
+      "id": "4f69e55b-0a6b-48b4-8224-c31c070496ac",
+      "orden": 2,
+      "icono": "capas",
+      "texto": "Soluciones integrales",
+      "activo": true
+    },
+    {
+      "id": "2e48ec44-47a7-471d-9eda-cc0b671d62b7",
+      "orden": 3,
+      "icono": "equipo",
+      "texto": "Acompañamiento técnico",
+      "activo": true
+    },
+    {
+      "id": "d27311ba-75c9-4646-8d6d-e475af67e11e",
+      "orden": 4,
+      "icono": "escudo",
+      "texto": "Equipos confiables",
+      "activo": true
+    }
+  ],
+  "descripcion_footer": "Especialistas en sistemas integrales de bombeo, soluciones flotantes y servicios para la industria y minería.",
+  "mision": "Brindar soluciones integrales de bombeo, sistemas flotantes y servicios especializados que aseguren la continuidad operativa de nuestros clientes.",
+  "vision": "Ser la empresa referente en soluciones de bombeo y sistemas flotantes para la industria y minería en el Perú."
+}

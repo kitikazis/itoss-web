@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ddf78685-6a67-43dd-9105-c9e6a8c587d6",
+    "orden": 1,
+    "nombre": "Bomba sumergible para lodos",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "10 HP",
+      "Hasta 120 m³/h",
+      "Trifásica 440 V"
+    ],
+    "disponible": true,
+    "activo": true
+  },
+  {
+    "id": "b922f30d-b6ec-447d-ac25-3927dc03cd39",
+    "orden": 2,
+    "nombre": "Bomba centrífuga autocebante",
+    "imagen": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "Motor diésel",
+      "Hasta 200 m³/h",
+      "Descarga 6\""
+    ],
+    "disponible": true,
+    "activo": true
+  },
+  {
+    "id": "585ca2dd-4c92-4f3c-b366-493bf4f76ee0",
+    "orden": 3,
+    "nombre": "Sistema de dragado portátil",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "Para pozas y lagunas",
+      "Operación continua",
+      "Con operador"
+    ],
+    "disponible": true,
+    "activo": true
+  },
+  {
+    "id": "f7ef6a75-933d-46ab-99be-4f405f8f2cb0",
+    "orden": 4,
+    "nombre": "Barcaza de servicio",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "Plataforma modular",
+      "Capacidad a medida",
+      "Transportable"
+    ],
+    "disponible": true,
+    "activo": true
+  },
+  {
+    "id": "410c5b3b-60b3-4792-9af1-7ecac6489cfe",
+    "orden": 5,
+    "nombre": "Pasarela y flotadores",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "Módulos ITOFLOT",
+      "Ensamble rápido",
+      "Alta resistencia"
+    ],
+    "disponible": true,
+    "activo": true
+  },
+  {
+    "id": "f01af8e3-2a6c-47b6-a43d-7bee7a1ce98c",
+    "orden": 6,
+    "nombre": "Generador y tablero de fuerza",
+    "imagen": "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=70",
+    "specs": [
+      "Hasta 150 kVA",
+      "Insonoro",
+      "Arranque automático"
+    ],
+    "disponible": true,
+    "activo": true
+  }
+]

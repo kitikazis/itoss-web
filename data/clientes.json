@@ -1,0 +1,44 @@
+[
+  {
+    "id": "68bc14aa-9709-4d21-8819-de34a96f5017",
+    "orden": 1,
+    "nombre": "Cliente 1",
+    "logo": "./img/clientes/cliente-1.svg",
+    "activo": true
+  },
+  {
+    "id": "0fd0ae93-64c8-4da6-96eb-559a9f97cc71",
+    "orden": 2,
+    "nombre": "Cliente 2",
+    "logo": "./img/clientes/cliente-2.svg",
+    "activo": true
+  },
+  {
+    "id": "ba3b975b-7565-4d4f-8ba1-7def48633577",
+    "orden": 3,
+    "nombre": "Cliente 3",
+    "logo": "./img/clientes/cliente-3.svg",
+    "activo": true
+  },
+  {
+    "id": "e36a50a5-7127-4c5a-bbb6-c6c4e90629d3",
+    "orden": 4,
+    "nombre": "Cliente 4",
+    "logo": "./img/clientes/cliente-4.svg",
+    "activo": true
+  },
+  {
+    "id": "b2b1d8da-69cb-4370-9fb1-0ac47406c1d4",
+    "orden": 5,
+    "nombre": "Cliente 5",
+    "logo": "./img/clientes/cliente-5.svg",
+    "activo": true
+  },
+  {
+    "id": "5b23d9de-6118-4db4-8b81-b58a24431860",
+    "orden": 6,
+    "nombre": "Cliente 6",
+    "logo": "./img/clientes/cliente-6.svg",
+    "activo": true
+  }
+]

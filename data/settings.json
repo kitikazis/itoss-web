@@ -1,0 +1,18 @@
+{
+  "whatsapp": "51902752445",
+  "telefono": "(+511) 710 6880",
+  "telefonos_footer": [
+    "(+511) 710 6880",
+    "(+511) 710 6888"
+  ],
+  "correo": "comercial@itoss.pe",
+  "direccion": "Lima - Perú",
+  "ruc": "20512345678",
+  "facebook": "https://www.facebook.com/",
+  "instagram": "https://www.instagram.com/",
+  "linkedin": "https://www.linkedin.com/",
+  "youtube": "https://www.youtube.com/",
+  "logo": "./img/logo-itoss.svg",
+  "brochure_pdf": "./docs/brochure-itoss.pdf",
+  "brochure_portada": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=70"
+}

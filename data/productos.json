@@ -1,0 +1,134 @@
+[
+  {
+    "id": "9baf7184-688a-4526-aaef-26d2ba930a34",
+    "orden": 1,
+    "nombre": "Bomba sumergible para lodos 10 HP",
+    "categoria": "Bombas sumergibles",
+    "marca": "MEUDY",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "e8e774b3-56e1-4596-9dd7-1f4e1ce956f7",
+    "orden": 2,
+    "nombre": "Bomba sumergible de drenaje 5 HP",
+    "categoria": "Bombas sumergibles",
+    "marca": "Goodwin",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "1209d58e-a67f-41d0-a685-a0a19fbd9fba",
+    "orden": 3,
+    "nombre": "Bomba centrífuga de alta presión",
+    "categoria": "Centrífugas",
+    "marca": "HCP",
+    "imagen": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "a5dfc232-11d2-4087-be2e-cbdb98ac6368",
+    "orden": 4,
+    "nombre": "Bomba centrífuga horizontal",
+    "categoria": "Centrífugas",
+    "marca": "OKFLOW",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "d89560d5-5855-4944-9583-48bf0e4216d4",
+    "orden": 5,
+    "nombre": "Motor eléctrico trifásico 15 HP",
+    "categoria": "Motores eléctricos",
+    "marca": "NASSAR Electronics",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "5083d0b3-1ee2-45e5-8e85-134e506a8c8e",
+    "orden": 6,
+    "nombre": "Motor eléctrico sumergible",
+    "categoria": "Motores eléctricos",
+    "marca": "Goodwin",
+    "imagen": "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "d41d2149-4b35-478e-9977-901b443e2d98",
+    "orden": 7,
+    "nombre": "Tablero de control y arranque",
+    "categoria": "Tableros",
+    "marca": "NASSAR Electronics",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "d7fc0116-fb99-4d43-878a-4772a5ee8b33",
+    "orden": 8,
+    "nombre": "Tablero de protección para bombas",
+    "categoria": "Tableros",
+    "marca": "HCP",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "6dc55f28-094a-4e83-ba82-a52728eb177d",
+    "orden": 9,
+    "nombre": "Flotadores para tuberías",
+    "categoria": "Accesorios",
+    "marca": "ITOFLOT",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "2716c2ff-f353-44d7-803f-dba9ea09f82a",
+    "orden": 10,
+    "nombre": "Kit de mangueras y acoples",
+    "categoria": "Accesorios",
+    "marca": "OKFLOW",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "eb8b7ad1-1051-4597-9c9f-3dde77c762d1",
+    "orden": 11,
+    "nombre": "Válvulas y accesorios de descarga",
+    "categoria": "Accesorios",
+    "marca": "MEUDY",
+    "imagen": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "4b931545-6ff8-4e69-a9b1-60b9a2030087",
+    "orden": 12,
+    "nombre": "Pasarela flotante modular",
+    "categoria": "Accesorios",
+    "marca": "ITOFLOT",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=700&q=70",
+    "specs": [],
+    "destacado": false,
+    "activo": true
+  }
+]

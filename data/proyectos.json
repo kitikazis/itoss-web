@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1e432214-5a7c-4304-8432-733bb1f8e4a7",
+    "orden": 1,
+    "titulo": "Sistema flotante ITOFLOT",
+    "foto": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=70",
+    "ubicacion": "Perú",
+    "categoria": "Industria",
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "05d8df3e-e981-46c4-83ff-b85fad4a061c",
+    "orden": 2,
+    "titulo": "Dragado y limpieza de pozas",
+    "foto": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=70",
+    "ubicacion": "Perú",
+    "categoria": "Minería",
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "c1eb81d0-52ae-483f-a031-6c1025e72e2a",
+    "orden": 3,
+    "titulo": "Instalación de sistema de bombeo",
+    "foto": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=70",
+    "ubicacion": "Perú",
+    "categoria": "Industria",
+    "destacado": true,
+    "activo": true
+  }
+]

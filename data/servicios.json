@@ -1,0 +1,46 @@
+[
+  {
+    "id": "2a861d4c-77af-4d91-932b-840666fffc03",
+    "orden": 1,
+    "titulo": "Sistemas de bombeo",
+    "descripcion": "Bombas sumergibles, centrífugas, motores eléctricos, tableros y accesorios.",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=70",
+    "enlace": "./productos.html",
+    "color": "marino",
+    "ancla": "srv-bombeo",
+    "activo": true
+  },
+  {
+    "id": "8e0f46f1-9cc4-4af0-97b7-a6eeab9572e7",
+    "orden": 2,
+    "titulo": "Servicios de dragado y limpieza de pozas",
+    "descripcion": "Soluciones especializadas para operaciones mineras e industriales.",
+    "imagen": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=800&q=70",
+    "enlace": "./proyectos.html",
+    "color": "naranja",
+    "ancla": "srv-dragado",
+    "activo": true
+  },
+  {
+    "id": "2dd85002-7998-428f-9ce6-659e948ef304",
+    "orden": 3,
+    "titulo": "Sistemas flotantes",
+    "descripcion": "Barcazas, pasarelas, flotadores para tuberías y botes de servicio.",
+    "imagen": "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=800&q=70",
+    "enlace": "./productos.html",
+    "color": "turquesa",
+    "ancla": "srv-flotantes",
+    "activo": true
+  },
+  {
+    "id": "5f429638-239d-42d8-8493-435855c75c19",
+    "orden": 4,
+    "titulo": "Alquiler y reparación",
+    "descripcion": "Alquiler de equipos y reparación multimarca.",
+    "imagen": "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=800&q=70",
+    "enlace": "./alquiler.html",
+    "color": "oscuro",
+    "ancla": "srv-alquiler",
+    "activo": true
+  }
+]
