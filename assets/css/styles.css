@@ -1,0 +1,65 @@
+/* Estilos custom mínimos; el resto se resuelve con Tailwind */
+[x-cloak] { display: none !important; }
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+
+/* Botón principal (CTA naranja) */
+.btn-cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 44px; padding: .65rem 1.4rem; border-radius: .5rem;
+  background: #F26A1B; color: #fff; font-family: Montserrat, sans-serif;
+  font-weight: 700; font-size: .9rem; transition: background .2s, transform .2s;
+}
+.btn-cta:hover { background: #d95a10; transform: translateY(-1px); }
+.btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  min-height: 44px; padding: .65rem 1.4rem; border-radius: .5rem;
+  border: 2px solid #fff; color: #fff; font-family: Montserrat, sans-serif;
+  font-weight: 700; font-size: .9rem; transition: background .2s, color .2s;
+}
+.btn-outline:hover { background: #fff; color: #0B3D91; }
+
+.eyebrow { font-family: Montserrat, sans-serif; font-weight: 700; letter-spacing: .15em; font-size: .8rem; color: #1BA3C6; }
+.titulo-seccion { font-family: Montserrat, sans-serif; font-weight: 800; color: #0B3D91; font-size: 1.75rem; line-height: 1.2; margin-top: .25rem; }
+@media (min-width: 1024px) { .titulo-seccion { font-size: 2.25rem; } }
+
+/* Formulario */
+.lbl { display: block; font-size: .85rem; font-weight: 600; color: #0A2A5E; margin-bottom: .35rem; }
+.campo {
+  width: 100%; min-height: 44px; padding: .6rem .85rem; border: 1px solid #cbd5e1;
+  border-radius: .5rem; background: #fff; font-size: 1rem; color: #0f172a;
+}
+.campo:focus { outline: 2px solid #1BA3C6; outline-offset: 1px; border-color: #1BA3C6; }
+
+/* Redes sociales del footer */
+.social {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 9999px; background: rgba(255,255,255,.1); color: #fff; transition: background .2s;
+}
+.social:hover { background: #1BA3C6; }
+
+/* Carruseles: scroll-snap nativo (swipe táctil) */
+.carrusel { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.carrusel::-webkit-scrollbar { display: none; }
+.carrusel > * { scroll-snap-align: start; flex: 0 0 85%; }
+@media (min-width: 640px) { .carrusel > * { flex-basis: calc(50% - .5rem); } }
+@media (min-width: 1024px) { .carrusel > * { flex-basis: calc(33.333% - .67rem); } }
+
+/* Logos de clientes: grises, a color en hover */
+.logo-cliente { filter: grayscale(1); opacity: .65; transition: filter .3s, opacity .3s; }
+.logo-cliente:hover { filter: none; opacity: 1; }
+
+/* Botón flotante de WhatsApp */
+.wa-float {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 9999;
+  width: 56px; height: 56px; border-radius: 9999px; background: #25D366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,.3); animation: wa-pulse 2.4s infinite;
+}
+.wa-float:hover { background: #1ebe5b; }
+@keyframes wa-pulse {
+  0% { box-shadow: 0 6px 16px rgba(0,0,0,.3), 0 0 0 0 rgba(37,211,102,.5); }
+  70% { box-shadow: 0 6px 16px rgba(0,0,0,.3), 0 0 0 16px rgba(37,211,102,0); }
+  100% { box-shadow: 0 6px 16px rgba(0,0,0,.3), 0 0 0 0 rgba(37,211,102,0); }
+}
+@media (prefers-reduced-motion: reduce) { .wa-float { animation: none; } html { scroll-behavior: auto; } }
